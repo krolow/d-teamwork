@@ -1,0 +1,29 @@
+{
+  "name": "d-teamwork",
+  "description": "Node DSL wrapper for Teamwork's HTTP API.",
+  "keywords": ["http", "teamwork", "dsl", "api", "web-service"],
+  "version": "0.1.0",
+  "author": "Vinícius Krolow <krolow@gmail.com>",
+  "contributors": [
+  ],
+  "dependencies": {
+    "coffee-script": "1.8.0",
+    "request": "2.45.0"
+  },
+  "devDependencies": {
+    "mocha": "1.21.5",
+    "should": "4.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/krolow/d-teamwork"
+  },
+  "bugs": {
+    "url": "https://github.com/krolow/d-teamwork/issues"
+  },
+  "engines": [ "node >= 0.6.17" ],
+  "main": "./index",
+  "scripts": {
+    "test": "mocha --compilers coffee:coffee-script/register --reporter spec"
+  }
+}
