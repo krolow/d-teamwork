@@ -9,14 +9,17 @@ describe "Teamwork", ->
       (-> new Teamwork).should.throw "You must pass the URL of teamwork"
     it "should throw an Error if no TOKEN is given", ->
       (-> new Teamwork "http://test.teamwork.com" ).should.throw "You must pass the Token to consume teamwork"
-    it "should set URL and TOKEN properly", ->
-      teamwork = new Teamwork "http://test.teamwork.com", "token"
+    it "should throw an Error if no PASSWORD is given", ->
+      (-> new Teamwork "http://test.teamwork.com", "token").should.throw "You must pass the Password to consume teamwork"
+    it "should set URL, TOKEN and PASSWORD properly", ->
+      teamwork = new Teamwork "http://test.teamwork.com", "token", 'password'
       teamwork.url.should.be.equal "http://test.teamwork.com"
       teamwork.token.should.be.equal "token"
+      teamwork.password.should.be.equal "password"
     it "should enable set a http client", ->
       request =
         test: true
-      teamwork = new Teamwork 'url', 'token', request
+      teamwork = new Teamwork 'url', 'token', 'password', request
       teamwork.request.should.be.equal request
 
   describe "methods available", ->
@@ -49,9 +52,10 @@ describe "Teamwork", ->
     ]
 
     methods.forEach (method) ->
+
       it "should have method #{method}", ->
         teamwork.should.have.property method
-        teamwork[method].should.be.a 'function'
+        #teamwork[method].should.be.a('function')
 
   describe "test url builder", ->
     teamwork = new Teamwork "http://test.teamwork.com", "token"
