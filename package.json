@@ -2,7 +2,7 @@
   "name": "d-teamwork",
   "description": "Node DSL wrapper for Teamwork's HTTP API.",
   "keywords": ["http", "teamwork", "dsl", "api", "web-service"],
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": "Vinícius Krolow <krolow@gmail.com>",
   "contributors": [
   ],
