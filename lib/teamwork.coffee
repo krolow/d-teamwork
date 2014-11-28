@@ -113,6 +113,19 @@ class Teamworker
       id: id
     this
 
+  notebooks: (id) ->
+    return @notebook(id) unless id?
+
+    ubuilder.add
+      path: 'notebooks'
+    this
+
+  notebook: (id) ->
+    ubuilder.add
+      path: 'notebooks',
+      id: id
+    this
+
   taskLists: ->
     ubuilder.add
       path: 'task_lists'
@@ -138,7 +151,8 @@ class Teamworker
 
   task: (id) ->
     ubuilder.add
-      path: 'task'
+      path: 'tasks'
+      id: id
     this
 
   links: ->
@@ -148,7 +162,19 @@ class Teamworker
 
   link: (id) ->
     ubuilder.add
-      path: 'link'
+      path: 'links'
+      id: id
+    this
+
+  risks: ->
+    ubuilder.add
+      path: 'risks'
+    this
+
+  risk: (id) ->
+    ubuilder.add
+      path: 'risks'
+      id: id
     this
 
   timeEntries: ->
@@ -156,9 +182,10 @@ class Teamworker
       path: 'time_entries'
     this
 
-  timeEntry: (id) ->
+  time: (id) ->
     ubuilder.add
-      path: 'time_entry'
+      path: 'time_entries'
+      id: id
     this
 
   milestones: ->
@@ -168,7 +195,7 @@ class Teamworker
 
   milestone: (id) ->
     ubuilder.add
-      path: 'milestone',
+      path: 'milestones',
       id: id
     this
 
@@ -179,7 +206,7 @@ class Teamworker
 
   file: (id) ->
     ubuilder.add
-      path: 'file'
+      path: 'files'
       id: id
     this
 
@@ -208,13 +235,20 @@ class Teamworker
       path: 'comments'
     this
 
-  comment: ->
+  comment: (id) ->
     ubuilder.add
       path: 'comments'
+      id: id
+    this
+
+  people: ->
+    ubuilder.add
+      path: 'people'
     this
 
   query: (params) ->
-    ubuilder.query(params)
+    ubuilder.addQueryParams(params)
+    this
 
   post: ->
     Array.prototype.unshift.call arguments, "POST"
@@ -244,6 +278,8 @@ class Teamworker
       auth:
         user: @token
         pass: @password
+
+    console.log options.uri
 
     callback = argsOrCallback if typeof argsOrCallback is 'function'
 
