@@ -246,6 +246,12 @@ class Teamworker
       path: 'people'
     this
 
+  person: (id) ->
+    ubuilder.add
+      path: 'people'
+      id: id
+    this
+
   query: (params) ->
     ubuilder.addQueryParams(params)
     this
