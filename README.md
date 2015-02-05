@@ -5,7 +5,7 @@ A Javascript/Coffescript/Node.js DSL lib to interact with teamwork API
 
 ## Usage
 
-```coffescript
+```coffee
 Teamwork = require 'd-teamwork'
 teamwork = new Teamwork(config.teamwork.url, config.teamwork.token, config.teamwork.password)
 
