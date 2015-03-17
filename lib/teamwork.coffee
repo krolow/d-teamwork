@@ -155,6 +155,22 @@ class Teamworker
       id: id
     this
 
+  complete: ->
+    ubuilder.add
+      path: 'complete'
+      rules: [
+        {need: 'task'}
+      ]
+    this
+
+  uncomplete: ->
+    ubuilder.add
+      path: 'uncomplete'
+      rules: [
+        {need: 'task'}
+      ]
+    this
+
   links: ->
     ubuilder.add
       path: 'links'
@@ -246,12 +262,6 @@ class Teamworker
       path: 'people'
     this
 
-  person: (id) ->
-    ubuilder.add
-      path: 'people'
-      id: id
-    this
-
   query: (params) ->
     ubuilder.addQueryParams(params)
     this
@@ -285,9 +295,10 @@ class Teamworker
         user: @token
         pass: @password
 
-    console.log options.uri
+    if typeof argsOrCallback is 'function'
+      return @request(options, argsOrCallback)
 
-    callback = argsOrCallback if typeof argsOrCallback is 'function'
+    options.form = JSON.stringify(argsOrCallback)
 
     @request(options, callback)
 
