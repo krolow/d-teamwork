@@ -298,7 +298,7 @@ class Teamworker
     if typeof argsOrCallback is 'function'
       return @request(options, argsOrCallback)
 
-    options.form = JSON.stringify(argsOrCallback)
+    options.json = argsOrCallback
 
     @request(options, callback)
 
